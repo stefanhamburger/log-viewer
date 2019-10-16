@@ -2,6 +2,15 @@
 
 A web app for interpreting log files, written in React and TypeScript.
 
+## Installation
+
+````bash
+git clone https://github.com/stefanhamburger/log-viewer.git
+cd log-viewer
+npm install
+npm start
+```
+
 ## License
 
 Copyright © 2019 Stefan Hamburger
