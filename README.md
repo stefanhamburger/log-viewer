@@ -4,7 +4,7 @@ A web app for interpreting log files, written in React and TypeScript.
 
 ## Installation
 
-````bash
+```bash
 git clone https://github.com/stefanhamburger/log-viewer.git
 cd log-viewer
 npm install
