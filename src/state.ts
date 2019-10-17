@@ -5,14 +5,14 @@ import render from './render';
 let logEntries: State["logEntries"] = [];
 
 const filter: State["filter"] = {
-  name: "",
+  message: "",
   levels: {},
   facilities: {},
   relativeTime: true,
 };
 
 function filterByName(entry: LogEntry): boolean {
-  const words = filter.name.trim().toLowerCase().split(" ").filter(word => word !== "");
+  const words = filter.message.trim().toLowerCase().split(" ").filter(word => word !== "");
   words.sort((a, b) => b.length - a.length);
 
   const message = entry.message === undefined ? "" : entry.message.toLowerCase();

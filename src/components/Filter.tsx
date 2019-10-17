@@ -29,8 +29,8 @@ function getSelectedOptions(obj: { [key: string]: boolean }): string[] {
 export default function Filter({ state }: { state: State }): JSX.Element {
   return (<div style={{ display: "flex", flexWrap: "wrap" }}>
     <TextField
-      label="Filter by name:"
-      onChange={(event, text) => setFilter(function(filter) { filter.name = text === undefined ? "" : text; })}
+      label="Filter by message:"
+      onChange={(event, text) => setFilter(function(filter) { filter.message = text === undefined ? "" : text; })}
       styles={controlStyles}
     />
     <Dropdown

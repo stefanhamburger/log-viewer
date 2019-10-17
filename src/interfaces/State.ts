@@ -4,7 +4,7 @@ export default interface State {
   logEntries: LogEntry[];
   totalEntries: number;
   filter: {
-    name: string;
+    message: string;
     levels: { [key: string]: boolean; },
     facilities: { [key: string]: boolean; },
     relativeTime: boolean,

@@ -20,7 +20,7 @@ export default function Table({ logEntries, filter }: { logEntries: LogEntry[]; 
       minWidth: 100,
       isMultiline: true,
       onRender: (item: LogEntry) => <span style={{ whiteSpace: "pre-wrap" }}>{item.message}</span>,
-      isFiltered: filter.name !== "",
+      isFiltered: filter.message !== "",
     },
     {
       key: "facility",
