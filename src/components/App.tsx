@@ -32,14 +32,18 @@ export default function App({ state }: { state: State }): JSX.Element {
 
   return (<>
     <h1><Text variant="xxLarge">Log viewer</Text></h1>
-    {numLogEntries === 0
+    {state.totalEntries === 0
       ? <Text block={true}>No log entries found.</Text>
       : (<>
-        <Text block={true}>Found {numLogEntries} log entries.</Text>
+        <Text block={true}>
+          Found {state.totalEntries} log entries
+          {numLogEntries < state.totalEntries && `, and showing ${numLogEntries} filtered entries`}
+          .
+        </Text>
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           <TextField
             label="Filter by name:"
-            onChange={() => { }}
+            onChange={(event, text) => setFilter(function(filter) { filter.name = text === undefined ? "" : text; })}
             styles={controlStyles}
           />
           <Dropdown
