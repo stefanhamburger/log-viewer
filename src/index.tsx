@@ -6,7 +6,6 @@ import { setState } from './state';
   render();
 
   const logEntries = await getJson();
-  console.log(logEntries);
   setState(logEntries);
   render();
 }());
