@@ -35,5 +35,7 @@ export default function groupSimilarEntries(entries: RawLogEntry[]): LogEntry[] 
     }
   }
 
+  list.push(previousEntry);
+
   return list.map(entry => rawEntryToEntry(entry));
 }
