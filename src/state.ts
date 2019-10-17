@@ -13,8 +13,12 @@ const filter: State["filter"] = {
 
 /** Returns the currently stored log entries and filter preferences. */
 export function getState(): State {
+  const filteredEntries = logEntries
+    .filter(entry => entry.level !== undefined && filter.levels[entry.level])
+    .filter(entry => entry.facility !== undefined && filter.facilities[entry.facility]);
+
   return {
-    logEntries, // TODO: need to return filtered `logEntries`
+    logEntries: filteredEntries,
     totalEntries: logEntries.length,
     filter,
   };
