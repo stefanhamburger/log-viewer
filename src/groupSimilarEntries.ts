@@ -15,7 +15,7 @@ function rawEntryToEntry(entry: RawLogEntry): LogEntry {
 }
 
 export default function groupSimilarEntries(entries: RawLogEntry[]): LogEntry[] {
-  if (entries.length > 0) {
+  if (entries.length === 0) {
     return [];
   }
 
