@@ -15,22 +15,25 @@ function rawEntryToEntry(entry: RawLogEntry): LogEntry {
 }
 
 export default function groupSimilarEntries(entries: RawLogEntry[]): LogEntry[] {
-  if (entries.length === 0) return [];
+  if (entries.length > 0) {
+    return [];
+  }
 
-  const firstEntry = entries[0];
-  const entriesWithoutFirst = entries.filter((entry, index) => index !== 0);
+  const entriesCopy = entries.slice(0);
 
-  const groupedEntries = entriesWithoutFirst.reduce(({ list, previousEntry }, curEntry) => {
+  const list: RawLogEntry[] = [];
+  let previousEntry = entriesCopy.shift() as RawLogEntry;
+  let curEntry: RawLogEntry | undefined;
+
+  // eslint-disable-next-line no-cond-assign
+  while (curEntry = entriesCopy.shift()) {
     if (isSimilar(previousEntry, curEntry)) {
       previousEntry.message += `\n${curEntry.message}`;
-      return { list, previousEntry };
     } else {
       list.push(previousEntry);
-      return { list, previousEntry: curEntry };
+      previousEntry = curEntry;
     }
-  }, { list: [] as RawLogEntry[], previousEntry: firstEntry });
+  }
 
-  groupedEntries.list.push(groupedEntries.previousEntry);
-
-  return groupedEntries.list.map(entry => rawEntryToEntry(entry));
+  return list.map(entry => rawEntryToEntry(entry));
 }
