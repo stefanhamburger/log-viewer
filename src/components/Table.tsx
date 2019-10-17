@@ -1,6 +1,7 @@
-import React from 'react';
-import { DetailsList, IColumn, SelectionMode } from 'office-ui-fabric-react';
-import LogEntry from '../interfaces/LogEntry';
+import React from "react";
+import moment from "moment";
+import { DetailsList, IColumn, SelectionMode } from "office-ui-fabric-react";
+import LogEntry from "../interfaces/LogEntry";
 
 const columns: IColumn[] = [
   {
@@ -27,7 +28,10 @@ const columns: IColumn[] = [
     key: "timeStamp",
     name: "Timestamp",
     minWidth: 200,
-    onRender: (item: LogEntry) => String(item.timeStamp),
+    onRender: (item: LogEntry) => (
+      <span title={item.timeStamp && item.timeStamp.toISOString()}>
+        {moment(item.timeStamp).fromNow()}
+      </span>),
   },
 ];
 
