@@ -2,15 +2,17 @@ import React from "react";
 import moment from "moment";
 import { DetailsList, IColumn, SelectionMode } from "office-ui-fabric-react";
 import LogEntry from "../interfaces/LogEntry";
+import State from "../interfaces/State";
 
-export default function Table({ logEntries, relativeTime }: { logEntries: LogEntry[]; relativeTime: boolean }): JSX.Element {
+export default function Table({ logEntries, filter }: { logEntries: LogEntry[]; filter: State["filter"] }): JSX.Element {
   const columns: IColumn[] = [
     {
       key: "level",
       name: "Level",
-      minWidth: 50,
-      maxWidth: 50,
+      minWidth: 60,
+      maxWidth: 60,
       onRender: (item: LogEntry) => item.level,
+      isFiltered: Object.values(filter.levels).reduce((out, cur) => out || !cur, false),
     },
     {
       key: "message",
@@ -18,19 +20,21 @@ export default function Table({ logEntries, relativeTime }: { logEntries: LogEnt
       minWidth: 100,
       isMultiline: true,
       onRender: (item: LogEntry) => <span style={{ whiteSpace: "pre-wrap" }}>{item.message}</span>,
+      isFiltered: filter.name !== "",
     },
     {
       key: "facility",
       name: "Facility",
       minWidth: 100,
       onRender: (item: LogEntry) => item.facility,
+      isFiltered: Object.values(filter.facilities).reduce((out, cur) => out || !cur, false),
     },
     {
       key: "timeStamp",
       name: "Timestamp",
-      minWidth: relativeTime ? 120 : 200,
+      minWidth: filter.relativeTime ? 120 : 200,
       onRender: (item: LogEntry) => (
-        relativeTime
+        filter.relativeTime
           ? (<span title={item.timeStamp && item.timeStamp.toUTCString()}>
               {moment(item.timeStamp).fromNow()}
             </span>)

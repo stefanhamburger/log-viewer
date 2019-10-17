@@ -18,7 +18,7 @@ export default function App({ state }: { state: State }): JSX.Element {
           .
         </Text>
         <Filter state={state} />
-        <Table logEntries={state.logEntries} relativeTime={state.filter.relativeTime} />
+        <Table logEntries={state.logEntries} filter={state.filter} />
       </>)}
   </>);
 }
