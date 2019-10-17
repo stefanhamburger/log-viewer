@@ -1,5 +1,5 @@
 import React from 'react';
-import { DetailsList, SelectionMode, IColumn } from 'office-ui-fabric-react';
+import { DetailsList, IColumn, SelectionMode, Text } from 'office-ui-fabric-react';
 import LogEntry from '../LogEntry';
 
 const columns: IColumn[] = [
@@ -42,13 +42,11 @@ export default function App({ logEntries }: { logEntries: LogEntry[] }): JSX.Ele
   const numLogEntries = logEntries.length;
 
   return (<>
-    <h1>Log viewer</h1>
+    <h1><Text variant="xxLarge">Log viewer</Text></h1>
     {numLogEntries === 0
-      ? (<>
-        <p>No log entries found.</p>
-      </>)
+      ? <Text>No log entries found.</Text>
       : (<>
-      <p>{numLogEntries} log entries were found.</p>
+      <Text>Found {numLogEntries} log entries.</Text>
       <DetailsList
         items={logEntries}
         columns={columns}
