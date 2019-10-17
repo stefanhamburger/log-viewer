@@ -9,9 +9,9 @@ export default function App({ logEntries }: { logEntries: LogEntry[] }): JSX.Ele
   return (<>
     <h1><Text variant="xxLarge">Log viewer</Text></h1>
     {numLogEntries === 0
-      ? <Text>No log entries found.</Text>
+      ? <Text block={true}>No log entries found.</Text>
       : (<>
-        <Text>Found {numLogEntries} log entries.</Text>
+        <Text block={true}>Found {numLogEntries} log entries.</Text>
         <Table logEntries={logEntries} />
       </>)}
   </>);
