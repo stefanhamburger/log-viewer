@@ -51,6 +51,6 @@ const output: LogEntry[] = [
   },
 ];
 
-test("groups 3 entries into 2", () => {
+test("groups four entries into three", () => {
   expect(groupSimilarEntries(input)).toEqual(output);
 })
