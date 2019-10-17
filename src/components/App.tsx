@@ -7,7 +7,7 @@ import Table from "./Table";
 export default function App({ state }: { state: State }): JSX.Element {
   const numLogEntries = state.logEntries.length;
 
-  return (<>
+  return (<div style={{ margin: "1em 1.5em" }}>
     <h1><Text variant="xxLarge">Log viewer</Text></h1>
     {state.totalEntries === 0
       ? <Text block={true}>No log entries found.</Text>
@@ -20,5 +20,5 @@ export default function App({ state }: { state: State }): JSX.Element {
         <Filter state={state} />
         <Table logEntries={state.logEntries} filter={state.filter} />
       </>)}
-  </>);
+  </div>);
 }
