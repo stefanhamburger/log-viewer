@@ -11,9 +11,18 @@ const filter: State["filter"] = {
   relativeTime: true,
 };
 
+function filterByName(entry: LogEntry): boolean {
+  const words = filter.name.trim().toLowerCase().split(" ").filter(word => word !== "");
+  words.sort((a, b) => b.length - a.length);
+
+  const message = entry.message === undefined ? "" : entry.message.toLowerCase();
+  return words.reduce((accumulator: boolean, word) => accumulator && message.includes(word), true);
+}
+
 /** Returns the currently stored log entries and filter preferences. */
 export function getState(): State {
   const filteredEntries = logEntries
+    .filter(filterByName)
     .filter(entry => entry.level !== undefined && filter.levels[entry.level])
     .filter(entry => entry.facility !== undefined && filter.facilities[entry.facility]);
 
