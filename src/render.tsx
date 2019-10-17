@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { App } from './components/App';
+import App from './components/App';
 import { FluentCustomizations } from '@uifabric/fluent-theme';
 import { Customizer, mergeStyles } from 'office-ui-fabric-react';
 import { getState } from './state';
@@ -21,7 +21,7 @@ export default function render(): void {
 
   ReactDOM.render(
     <Customizer {...FluentCustomizations}>
-      <App />
+      <App logEntries={logEntries} />
     </Customizer>,
     document.getElementById('root')
   );
