@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'office-ui-fabric-react';
-import LogEntry from '../LogEntry';
+import LogEntry from '../interfaces/LogEntry';
 import Table from './Table';
 
 export default function App({ logEntries }: { logEntries: LogEntry[] }): JSX.Element {

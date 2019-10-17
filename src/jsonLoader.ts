@@ -1,11 +1,5 @@
-import LogEntry from "./LogEntry";
-
-interface RawLogEntry {
-  message?: string;
-  facility?: string;
-  level?: "Notice" | "Debug" | string;
-  timeStamp?: string;
-}
+import LogEntry from "./interfaces/LogEntry";
+import RawLogEntry from "./interfaces/RawLogEntry";
 
 function isSimilar(entry1: RawLogEntry, entry2: RawLogEntry): boolean {
   return entry1.level === entry2.level && entry1.facility === entry2.facility && entry1.timeStamp === entry2.timeStamp;

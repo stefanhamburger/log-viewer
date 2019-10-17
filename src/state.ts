@@ -1,4 +1,4 @@
-import LogEntry from "./LogEntry";
+import LogEntry from "./interfaces/LogEntry";
 
 let logEntries: LogEntry[] = [];
 

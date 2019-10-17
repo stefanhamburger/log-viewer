@@ -1,6 +1,6 @@
 import React from 'react';
 import { DetailsList, IColumn, SelectionMode } from 'office-ui-fabric-react';
-import LogEntry from '../LogEntry';
+import LogEntry from '../interfaces/LogEntry';
 
 const columns: IColumn[] = [
   {
