@@ -17,11 +17,11 @@ mergeStyles({
 });
 
 export default function render(): void {
-  const logEntries = getState();
+  const state = getState();
 
   ReactDOM.render(
     <Customizer {...FluentCustomizations}>
-      <App logEntries={logEntries} />
+      <App logEntries={state.logEntries} />
     </Customizer>,
     document.getElementById('root')
   );

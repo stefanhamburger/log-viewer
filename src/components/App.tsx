@@ -38,9 +38,25 @@ export default function App({ logEntries }: { logEntries: LogEntry[] }): JSX.Ele
       : (<>
         <Text block={true}>Found {numLogEntries} log entries.</Text>
         <div style={{ display: "flex", flexWrap: "wrap" }}>
-          <TextField label="Filter by name:" onChange={() => { }} styles={controlStyles} />
-          <Dropdown label="Level:" multiSelect options={levels} styles={dropdownStyles} />
-          <Dropdown label="Facility:" multiSelect options={facilities} styles={dropdownStyles} />
+          <TextField
+            label="Filter by name:"
+            onChange={() => { }}
+            styles={controlStyles}
+          />
+          <Dropdown
+            label="Level:"
+            multiSelect
+            options={levels}
+            onChange={() => { }}
+            styles={dropdownStyles}
+          />
+          <Dropdown
+            label="Facility:"
+            multiSelect
+            options={facilities}
+            onChange={() => { }}
+            styles={dropdownStyles}
+          />
           <Toggle
             label="Time display"
             onText="Relative"
