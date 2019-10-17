@@ -8,33 +8,26 @@ const columns: IColumn[] = [
     name: "Level",
     minWidth: 50,
     maxWidth: 50,
-    onRender: (item: LogEntry) => {
-      return item.level;
-    },
+    onRender: (item: LogEntry) => item.level,
   },
   {
     key: "message",
     name: "Message",
     minWidth: 100,
-    onRender: (item: LogEntry) => {
-      return item.message;
-    },
+    isMultiline: true,
+    onRender: (item: LogEntry) => <span style={{ whiteSpace: "pre-wrap" }}>{item.message}</span>,
   },
   {
     key: "facility",
     name: "Facility",
     minWidth: 100,
-    onRender: (item: LogEntry) => {
-      return item.facility;
-    },
+    onRender: (item: LogEntry) => item.facility,
   },
   {
     key: "timeStamp",
     name: "Timestamp",
     minWidth: 200,
-    onRender: (item: LogEntry) => {
-      return String(item.timeStamp);
-    },
+    onRender: (item: LogEntry) => String(item.timeStamp),
   },
 ];
 
