@@ -21,7 +21,7 @@ export default function render(): void {
 
   ReactDOM.render(
     <Customizer {...FluentCustomizations}>
-      <App logEntries={state.logEntries} />
+      <App state={state} />
     </Customizer>,
     document.getElementById('root')
   );

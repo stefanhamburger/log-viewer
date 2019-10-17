@@ -1,7 +1,8 @@
 import React from "react";
 import { Dropdown, IDropdownOption, Text, TextField, Toggle } from "office-ui-fabric-react";
-import LogEntry from "../interfaces/LogEntry";
+import State from "../interfaces/State";
 import Table from "./Table";
+import { setFilter } from '../state';
 
 const controlStyles = {
   root: {
@@ -28,8 +29,8 @@ const facilities: IDropdownOption[] = [
   { key: "GF::eai:eproduct", text: "GF::eai:eproduct" },
 ];
 
-export default function App({ logEntries }: { logEntries: LogEntry[] }): JSX.Element {
-  const numLogEntries = logEntries.length;
+export default function App({ state }: { state: State }): JSX.Element {
+  const numLogEntries = state.logEntries.length;
 
   return (<>
     <h1><Text variant="xxLarge">Log viewer</Text></h1>
@@ -61,12 +62,12 @@ export default function App({ logEntries }: { logEntries: LogEntry[] }): JSX.Ele
             label="Time display"
             onText="Relative"
             offText="Absolute"
-            checked={true}
-            onChange={() => { }}
+            checked={state.filter.relativeTime}
+            onChange={(event, checked) => setFilter(function(filter) { filter.relativeTime = Boolean(checked); })}
             styles={controlStyles}
           />
         </div>
-        <Table logEntries={logEntries} />
+        <Table logEntries={state.logEntries} relativeTime={state.filter.relativeTime} />
       </>)}
   </>);
 }
