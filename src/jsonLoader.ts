@@ -7,6 +7,7 @@ interface RawLogEntry {
   timeStamp?: string;
 }
 
+/** Reads the log entries from "errors.json", parses it into `LogEntry` and returns it. */
 export default async function getJson(): Promise<LogEntry[]> {
   const fileContents = await fetch("./errors.json");
   const json = await fileContents.json() as { data: RawLogEntry[] };
