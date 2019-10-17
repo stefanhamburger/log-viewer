@@ -20,14 +20,12 @@ const dropdownStyles = {
   },
 };
 
-const levels: IDropdownOption[] = [
-  { key: "Notice", text: "Notice" },
-  { key: "Debug", text: "Debug" },
-];
-const facilities: IDropdownOption[] = [
-  { key: "GF::afml", text: "GF::afml" },
-  { key: "GF::eai:eproduct", text: "GF::eai:eproduct" },
-];
+function getDropdownOptions(obj: { [key: string]: boolean }): IDropdownOption[] {
+  return Object.keys(obj).map(name => ({ key: name, text: name }));
+}
+function getSelectedOptions(obj: { [key: string]: boolean }): string[] {
+  return Object.entries(obj).filter(([, selected]) => selected).map(([key]) => key);
+}
 
 export default function App({ state }: { state: State }): JSX.Element {
   const numLogEntries = state.logEntries.length;
@@ -47,15 +45,17 @@ export default function App({ state }: { state: State }): JSX.Element {
           <Dropdown
             label="Level:"
             multiSelect
-            options={levels}
-            onChange={() => { }}
+            options={getDropdownOptions(state.filter.levels)}
+            selectedKeys={getSelectedOptions(state.filter.levels)}
+            onChange={(event, item) => item && setFilter(function(filter) { filter.levels[item.key] = Boolean(item.selected); })}
             styles={dropdownStyles}
-          />
+            />
           <Dropdown
             label="Facility:"
             multiSelect
-            options={facilities}
-            onChange={() => { }}
+            options={getDropdownOptions(state.filter.facilities)}
+            selectedKeys={getSelectedOptions(state.filter.facilities)}
+            onChange={(event, item) => item && setFilter(function(filter) { filter.facilities[item.key] = Boolean(item.selected); })}
             styles={dropdownStyles}
           />
           <Toggle

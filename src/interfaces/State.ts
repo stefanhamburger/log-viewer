@@ -5,8 +5,8 @@ export default interface State {
   totalEntries: number;
   filter: {
     name: string;
-    levels: string[],
-    facilities: string[],
+    levels: { [key: string]: boolean; },
+    facilities: { [key: string]: boolean; },
     relativeTime: boolean,
   };
 }
