@@ -12,7 +12,7 @@ export default function App({ state }: { state: State }): JSX.Element {
     {state.totalEntries === 0
       ? <Text block={true}>No log entries found.</Text>
       : (<>
-        <Text block={true}>
+        <Text block={true} styles={{ root: { marginBottom: "1em" } }}>
           Found {state.totalEntries} log entries
           {numLogEntries < state.totalEntries && `, and showing ${numLogEntries} filtered entries`}
           .
