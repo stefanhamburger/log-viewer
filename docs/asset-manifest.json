@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/log-viewer/index.html/static/js/main.30476f4f.chunk.js",
-    "main.js.map": "/log-viewer/index.html/static/js/main.30476f4f.chunk.js.map",
-    "runtime~main.js": "/log-viewer/index.html/static/js/runtime~main.00a0b2fc.js",
-    "runtime~main.js.map": "/log-viewer/index.html/static/js/runtime~main.00a0b2fc.js.map",
-    "static/js/2.f479bef8.chunk.js": "/log-viewer/index.html/static/js/2.f479bef8.chunk.js",
-    "static/js/2.f479bef8.chunk.js.map": "/log-viewer/index.html/static/js/2.f479bef8.chunk.js.map",
-    "index.html": "/log-viewer/index.html/index.html",
-    "precache-manifest.df88dec2ada7421c3aad0d82356da9e0.js": "/log-viewer/index.html/precache-manifest.df88dec2ada7421c3aad0d82356da9e0.js",
-    "service-worker.js": "/log-viewer/index.html/service-worker.js"
+    "main.js": "/log-viewer/static/js/main.30476f4f.chunk.js",
+    "main.js.map": "/log-viewer/static/js/main.30476f4f.chunk.js.map",
+    "runtime~main.js": "/log-viewer/static/js/runtime~main.a5a0b4f6.js",
+    "runtime~main.js.map": "/log-viewer/static/js/runtime~main.a5a0b4f6.js.map",
+    "static/js/2.f479bef8.chunk.js": "/log-viewer/static/js/2.f479bef8.chunk.js",
+    "static/js/2.f479bef8.chunk.js.map": "/log-viewer/static/js/2.f479bef8.chunk.js.map",
+    "index.html": "/log-viewer/index.html",
+    "precache-manifest.d89b5e0946262814eea8fe4a2bdf9930.js": "/log-viewer/precache-manifest.d89b5e0946262814eea8fe4a2bdf9930.js",
+    "service-worker.js": "/log-viewer/service-worker.js"
   }
 }
