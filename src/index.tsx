@@ -4,6 +4,13 @@ import { setEntries } from './state';
 
 (async function() {
   initializeIcons();
-  const logEntries = await getJson();
-  setEntries(logEntries);
+  try {
+    const logEntries = await getJson();
+    setEntries(logEntries);
+  } catch (error) {
+    const root = document.getElementById("root");
+    if (root !== null) {
+      root.innerText = `Could not load log file: ${error.message}`;
+    }
+  }
 }());
