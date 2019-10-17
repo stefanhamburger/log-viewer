@@ -2,30 +2,37 @@ import LogEntry from "./interfaces/LogEntry";
 import State from "./interfaces/State";
 import render from './render';
 
-const state: State = {
-  logEntries: [],
-  filter: {
-    name: "",
-    levels: [],
-    facilities: [],
-    relativeTime: true,
-  }
-}
+let logEntries: State["logEntries"] = [];
+
+const filter: State["filter"] = {
+  name: "",
+  levels: [],
+  facilities: [],
+  relativeTime: true,
+};
 
 /** Returns the currently stored log entries and filter preferences. */
 export function getState(): State {
-  return state;
+  return {
+    logEntries, // TODO: need to return filtered `logEntries`
+    totalEntries: logEntries.length,
+    filter,
+  };
+}
+
+function removeDuplicates(entry: string | undefined, index: number, array: (string | undefined)[]): boolean {
+  return entry !== undefined && array.indexOf(entry) === index;
 }
 
 /** Stores the given log entries in the state. */
 export function setEntries(newEntries: LogEntry[]): void {
-  state.logEntries = newEntries;
-  state.filter.levels = state.logEntries.map(({ level }) => level).filter((level, index, array) => level && array.indexOf(level) === index) as string[];
-  state.filter.facilities = state.logEntries.map(({ facility }) => facility).filter((facility, index, array) => facility && array.indexOf(facility) === index) as string[];
+  logEntries = newEntries;
+  filter.levels = logEntries.map(({ level }) => level).filter(removeDuplicates) as string[];
+  filter.facilities = logEntries.map(({ facility }) => facility).filter(removeDuplicates) as string[];
   render();
 }
 
 export function setFilter(callback: (filter: State["filter"]) => void): void {
-  callback(state.filter);
+  callback(filter);
   render();
 }
