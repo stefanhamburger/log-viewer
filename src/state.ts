@@ -20,8 +20,8 @@ export function getState(): State {
 /** Stores the given log entries in the state. */
 export function setEntries(newEntries: LogEntry[]): void {
   state.logEntries = newEntries;
-  state.filter.levels = state.logEntries.reduce((levels, { level }) => { if (level && !levels.includes(level)) levels.push(level); return levels; }, [] as string[]);
-  state.filter.facilities = state.logEntries.reduce((facilities, { facility }) => { if (facility && !facilities.includes(facility)) facilities.push(facility); return facilities; }, [] as string[]);
+  state.filter.levels = state.logEntries.map(({ level }) => level).filter((level, index, array) => level && array.indexOf(level) === index) as string[];
+  state.filter.facilities = state.logEntries.map(({ facility }) => facility).filter((facility, index, array) => facility && array.indexOf(facility) === index) as string[];
   render();
 }
 
