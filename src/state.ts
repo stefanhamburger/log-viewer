@@ -1,15 +1,6 @@
 import LogEntry from "./interfaces/LogEntry";
+import State from "./interfaces/State";
 import render from './render';
-
-interface State {
-  logEntries: LogEntry[];
-  filter: {
-    name: string;
-    levels: string[],
-    facilities: string[],
-    relativeTime: boolean,
-  };
-}
 
 const state: State = {
   logEntries: [],
