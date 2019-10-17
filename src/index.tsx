@@ -1,23 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { App } from './components/App';
-import { FluentCustomizations } from '@uifabric/fluent-theme';
-import { Customizer, mergeStyles } from 'office-ui-fabric-react';
+import render from "./render";
+import getJson from './jsonLoader';
+import { setState } from './state';
 
-// Inject some global styles
-mergeStyles({
-  selectors: {
-    ':global(body), :global(html), :global(#root)': {
-      margin: 0,
-      padding: 0,
-      height: '100vh'
-    }
-  }
-});
+(async function() {
+  render();
 
-ReactDOM.render(
-  <Customizer {...FluentCustomizations}>
-    <App />
-  </Customizer>,
-  document.getElementById('root')
-);
+  const logEntries = await getJson();
+  setState(logEntries);
+  render();
+}());
